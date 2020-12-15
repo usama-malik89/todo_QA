@@ -9,7 +9,7 @@ public class ItemDto {
 
 	private Long id;
 	private String name;
-	private String category;
+	private boolean priority;
 	private boolean isDone;
 
 	// this will spit out JSON

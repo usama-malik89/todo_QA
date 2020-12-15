@@ -30,7 +30,7 @@ public class Item {
 	private String name;
 	
 	@NotNull
-	private String category;
+	private boolean priority;
 	
 	@NotNull
 	private boolean isDone;
@@ -38,18 +38,18 @@ public class Item {
 	@ManyToOne
 	private TodoList list;
 
-	public Item(Long id, String name, String category, boolean isDone) {
+	public Item(Long id, String name, boolean priority, boolean isDone) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.category = category;
+		this.priority = priority;
 		this.isDone = isDone;
 	}
 
-	public Item(String name, String category, boolean isDone) {
+	public Item(String name, boolean priority, boolean isDone) {
 		super();
 		this.name = name;
-		this.category = category;
+		this.priority = priority;
 		this.isDone = isDone;
 	}
 
