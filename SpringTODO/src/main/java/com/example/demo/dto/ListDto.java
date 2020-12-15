@@ -11,6 +11,7 @@ public class ListDto {
 
 	private Long id;
 	private String name;
+	private String colour;
 
 	private List<ItemDto> items;
 

@@ -35,19 +35,24 @@ public class TodoList {
 	@NotNull
 	private String name;
 	
+	@NotNull
+	private String colour;
+	
 	@OneToMany(mappedBy = "list", fetch=FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Item> items;
 
-	public TodoList(Long id, String name) {
+	public TodoList(Long id, String name, String colour) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.colour = colour;
 	}
 
-	public TodoList(String name) {
+	public TodoList(String name, String colour) {
 		super();
 		this.name = name;
+		this.colour = colour;
 	}
 
 }
