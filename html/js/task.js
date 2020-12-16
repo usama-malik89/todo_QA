@@ -52,6 +52,36 @@ function getOneTask(id) {
         });
 }
 
+function getAllListName(currentListId){
+    fetch('http://localhost:9092/list/read')
+    .then(
+        function (response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
+            // Examine the text in the response
+            response.json().then(function (listData) {
+
+
+                let options = document.getElementById("listSelect");
+                options.innerHTML = '';
+                //let data = Object.keys(listData[0]);
+
+                console.log(listData);
+                for (let list of listData) {
+                    options.insertAdjacentHTML("beforeend", "<option value='"+list["id"]+"'>"+list["name"]+"</option>");
+                }
+                $('#listSelect').val(currentListId);
+            });
+        }
+    )
+    .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+    });
+}
+
 function postTaskData(data) {
     fetch('http://localhost:9092/todo_item/create', {
         method: 'post', //post, put,delete
@@ -125,10 +155,13 @@ $(document).on("click", "#confirmEdit", function () {
     let formElements = document.querySelector("form.editTask").elements;
     let name = formElements["edit-taskName"].value;
     let priority = formElements["edit-priorityCheck"].checked;
-    console.log(priority)
-
+    let list = document.getElementById("listSelect").value;
+    console.log(list);
     data = {
         "name": name,
+        "list": {
+            "id": list
+        },
         "priority": priority,
         "done": false
     }
@@ -153,6 +186,9 @@ $('#addTaskModalCenter').on('show.bs.modal', function (e) {
 $('#editTaskModalCenter').on('show.bs.modal', function (e) {
     var $trigger = $(e.relatedTarget);
     let id = $trigger.data('button');
+    let currentList = $($trigger).closest(".col-xl-4");
+    console.log(currentList[0].id);
     taskToEdit = id;
     getOneTask(id);
+    getAllListName(currentList[0].id);
 })
