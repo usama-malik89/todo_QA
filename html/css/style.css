@@ -89,7 +89,22 @@ body {
   border-color: black
 }
 
-/* CODE BELOW I GOT FROM https://codepen.io/tobiasdev/pen/YWpBxX */
+.done {
+  position: relative;  
+}
+
+.done:after {
+position: absolute;
+left: 50px;
+top: 50%;
+height: 1px;
+background: black;
+content: "";
+width: 70%;
+display: block;
+}
+
+/* CODE BELOW I GOT FROM https://codepen.io/tobiasdev/pen/YWpBxX which i slightly modified*/
 .colorInput {
   display: none;
 }

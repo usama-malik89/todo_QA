@@ -29,8 +29,8 @@ public class ListService {
 
 	// we create our mapToDto
 
-	private ListDto mapToDTO(TodoList library) {
-		return this.mapper.map(library, ListDto.class);
+	private ListDto mapToDTO(TodoList todo_list) {
+		return this.mapper.map(todo_list, ListDto.class);
 	}
 
 	@Autowired
@@ -41,8 +41,8 @@ public class ListService {
 	}
 
 	// Create
-	public ListDto create(TodoList library) {
-		return this.mapToDTO(this.repo.save(library));
+	public ListDto create(TodoList todo_list) {
+		return this.mapToDTO(this.repo.save(todo_list));
 	}
 
 	// read all method
@@ -61,13 +61,13 @@ public class ListService {
 	}
 
 	// update
-	public ListDto update(ListDto libraryDto, Long id) {
+	public ListDto update(ListDto todo_listDto, Long id) {
 		// check if record exists
 		TodoList toUpdate = this.repo.findById(id).orElseThrow(ListNotFoundException::new);
 		// set the record to update
-		toUpdate.setName(libraryDto.getName());
+		toUpdate.setName(todo_listDto.getName());
 		// check update for any nulls
-		SpringBeanUtil.mergeNotNull(libraryDto, toUpdate);
+		SpringBeanUtil.mergeNotNull(todo_listDto, toUpdate);
 		// retun the method from repo
 		return this.mapToDTO(this.repo.save(toUpdate));
 

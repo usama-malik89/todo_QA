@@ -1,13 +1,13 @@
 var taskToEdit = 0;
 
 /* ################ FUNCTIONS ################ */
-function buildItem(name, colour, id, priority) {
-    let first = '<li class="list-group-item">\
+function buildItem(name, colour, id, priority, done) {
+    let first = '<li class="list-group-item ' + ( done ?  "done" : "" ) + '">\
     <div class="todo-indicator" style="background-color:'+ colour + '"></div>\
     <div class="widget-content p-0">\
         <div class="widget-content-wrapper">\
             <div class="mr-2">\
-                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="exampleCustomCheckbox12" type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox12">&nbsp;</label> </div>\
+                <div class="custom-checkbox custom-control"> <input class="custom-control-input" id="s'+id+'" type="checkbox" onclick="checkDone(this);" ' + ( done ?  "checked" : "" ) + '><label class="custom-control-label" for="s'+id+'">&nbsp;</label> </div>\
             </div>\
             <div>\
                 <div>'+ name + '';
@@ -99,8 +99,8 @@ function postTaskData(data) {
         })
 }
 
-function putTaskData(data) {
-    fetch('http://localhost:9092/todo_item/update/' + taskToEdit, {
+function putTaskData(data, id) {
+    fetch('http://localhost:9092/todo_item/update/' + id, {
         method: 'put', //post, put,delete
         headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -125,6 +125,32 @@ function deleteTaskRecord(id) {
             fillPage();
         })
         .then(res => console.log(res))
+}
+
+function checkDone(elem){
+    let id = elem.id.substring(1)
+    if(elem.checked){
+        let li = $(elem).closest(".list-group-item");
+        li.addClass("done");
+        for(let task of globalTaskList){
+            if(task["id"] == id){
+                task["done"] = true;
+                putTaskData(task, id);
+                break;
+            }
+        }
+    }
+    else{
+        let li = $(elem).closest(".list-group-item");
+        li.removeClass("done");
+        for(let task of globalTaskList){
+            if(task["id"] == id){
+                task["done"] = false;
+                putTaskData(task, id);
+                break;
+            }
+        }
+    }
 }
 
 /* ################ EVENT LISTENERS ################ */
@@ -165,7 +191,7 @@ $(document).on("click", "#confirmEdit", function () {
         "priority": priority,
         "done": false
     }
-    putTaskData(data);
+    putTaskData(data, taskToEdit);
 });
 
 $(document).on("click", "#deleteTask", function () {

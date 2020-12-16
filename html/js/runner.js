@@ -1,4 +1,7 @@
+var globalTaskList = [];
+
 function fillPage() {
+    globalTaskList = [];
     fetch('http://localhost:9092/list/read')
         .then(
             function (response) {
@@ -9,19 +12,19 @@ function fillPage() {
                 }
                 // Examine the text in the response
                 response.json().then(function (listData) {
-
-
                     let row = document.getElementById("listContainer");
                     row.innerHTML = '';
                     //let data = Object.keys(listData[0]);
 
                     console.log(listData);
                     for (let list of listData) {
+                        //globalTaskList.push(list["items"]);
                         row.insertAdjacentHTML("beforeend", buildList(list["name"], list["id"], list["colour"]));
                         let listContent = document.getElementById(list["id"] + "-content");
                         let listItems = list["items"];
                         for (let items of listItems) {
-                            listContent.insertAdjacentHTML("beforeend", buildItem(items["name"], list["colour"], items["id"], items["priority"]));
+                            globalTaskList.push(items);
+                            listContent.insertAdjacentHTML("beforeend", buildItem(items["name"], list["colour"], items["id"], items["priority"], items["done"]));
                         }
                     }
                 });

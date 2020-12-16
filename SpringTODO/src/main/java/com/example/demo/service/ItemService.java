@@ -29,8 +29,8 @@ public class ItemService {
 
 	// we create our mapToDto
 
-	private ItemDto mapToDTO(Item book) {
-		return this.mapper.map(book, ItemDto.class);
+	private ItemDto mapToDTO(Item item) {
+		return this.mapper.map(item, ItemDto.class);
 	}
 
 	@Autowired
@@ -41,8 +41,8 @@ public class ItemService {
 	}
 
 	// Create
-	public ItemDto create(Item book) {
-		return this.mapToDTO(this.repo.save(book));
+	public ItemDto create(Item item) {
+		return this.mapToDTO(this.repo.save(item));
 	}
 
 	// read all method
@@ -61,13 +61,13 @@ public class ItemService {
 	}
 
 	// update
-	public ItemDto update(ItemDto bookDto, Long id) {
+	public ItemDto update(ItemDto itemDto, Long id) {
 		// check if record exists
 		Item toUpdate = this.repo.findById(id).orElseThrow(ItemNotFoundException::new);
 		// set the record to update
-		toUpdate.setName(bookDto.getName());
+		toUpdate.setName(itemDto.getName());
 		// check update for any nulls
-		SpringBeanUtil.mergeNotNull(bookDto, toUpdate);
+		SpringBeanUtil.mergeNotNull(itemDto, toUpdate);
 		// retun the method from repo
 		return this.mapToDTO(this.repo.save(toUpdate));
 
