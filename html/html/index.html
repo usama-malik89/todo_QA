@@ -73,69 +73,11 @@
                                 <button type="submit" class="btn btn-success btn-block" value="update">Add</button>
 
                             </form>
-
-
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                Collapsible Group Item #2
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                            squid. 3 wolf
-                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod.
-                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                            assumenda
-                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                            sapiente ea
-                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                            raw denim
-                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable
-                            VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
-                                Collapsible Group Item #3
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordionExample">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                            squid. 3 wolf
-                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod.
-                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                            assumenda
-                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                            sapiente ea
-                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                            raw denim
-                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable
-                            VHS.
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
 
 
         <!-- Page Content -->
@@ -202,6 +144,62 @@
                 </div>
             </div>
 
+            <!-- Edit List Modal -->
+            <div class="modal fade" id="editListModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Edit List</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="editList">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">List Name:</label>
+                                    <input type="text" class="form-control" id="edit-ListName" required>
+                                </div>
+                                <!-- GOT CODE BELOW IS FOR COLOR RADIO ELEMENT WHICH I GOT FROM https://codepen.io/tobiasdev/pen/YWpBxX -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Color:</label>
+
+                                    <label class="orange">
+                                        <input  class="colorInput" type="radio" name="editColor" id="FF5722" value="#FF5722" checked>
+                                        <div class="button"><span></span></div>
+                                    </label>
+
+                                    <label class="amber">
+                                        <input class="colorInput" type="radio" name="editColor" id="FFC107" value="#FFC107">
+                                        <div class="button"><span></span></div>
+                                    </label>
+
+                                    <label class="lime">
+                                        <input  class="colorInput" type="radio" name="editColor" id="8BC34A" value="#8BC34A">
+                                        <div class="button"><span></span></div>
+                                    </label>
+
+                                    <label class="teal">
+                                        <input  class="colorInput" type="radio" name="editColor" id="009688" value="#009688">
+                                        <div class="button"><span></span></div>
+                                    </label>
+
+                                    <label class="blue">
+                                        <input  class="colorInput" type="radio" name="editColor" id="2196F3" value="#2196F3">
+                                        <div class="button"><span></span></div>
+                                    </label>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="confirmListEdit" data-dismiss="modal">Save List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- NAVBAR -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
 
@@ -229,38 +227,10 @@
             <div class="container-fluid">
                 <br>
                 <div class="row" id="listContainer">
-                    <!-- LIST CARDS -->
-                    <!-- <div class="col-md-4">
-                        <div class="row d-flex justify-content-center container">
-                            <div class="col-md-12">
-                                <div class="card-hover-shadow-2x mb-3 card">
-                                    <div class="card-header-tab card-header">
-                                        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-                                            <i class="fa fa-tasks"></i>&nbsp;Task Lists</div>
-                                    </div>
-                                    <div class="scroll-area-sm">
-                                        <perfect-scrollbar class="ps-show-limits">
-                                            <div style="position: static;" class="ps ps--active-y">
-                                                <div class="ps-content">
-                                                    <ul class=" list-group list-group-flush" id="testing">
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </perfect-scrollbar>
-                                    </div>
-                                    <div class="d-block text-right card-footer">
-                                        <button class="mr-2 btn btn-link btn-sm" id="deleteBtn">Delete List</button>
-                                        <button class="btn btn-primary">Add Task</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
 
     </div>
 
@@ -272,6 +242,8 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
     <script src="../js/list.js"></script>
+    <script src="../js/task.js"></script>
+    <script src="../js/runner.js"></script>
 </body>
 
 </html>
