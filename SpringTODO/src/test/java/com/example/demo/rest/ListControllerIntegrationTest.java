@@ -34,7 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:item-schema.sql", "classpath:list-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "prod")
-public class ListControllerIntegrationTest {
+class ListControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc;

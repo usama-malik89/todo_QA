@@ -16,18 +16,9 @@ import com.example.demo.util.SpringBeanUtil;
 @Service
 public class ItemService {
 
-	// this is where our business logic will happen
-
-//	this is also where CRUD logic will take place.
-
-	// implements are crud functionality
 	private ItemRepo repo;
 
-	// makes object mapping easy by automatically determining how one object model
-	// maps to another.
 	private ModelMapper mapper;
-
-	// we create our mapToDto
 
 	private ItemDto mapToDTO(Item item) {
 		return this.mapper.map(item, ItemDto.class);
@@ -48,11 +39,6 @@ public class ItemService {
 	// read all method
 	public List<ItemDto> readAll() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
-		// stream - returns a sequential stream considering collection as its source
-		// map - used to map each element to its corresponding result
-		// :: - for each e.g. Random random = new Random();
-		// random.ints().limit(10).forEach(System.out::println);
-		// Collectors - used to return a list or string
 	}
 
 	// read one method
@@ -72,8 +58,6 @@ public class ItemService {
 		return this.mapToDTO(this.repo.save(toUpdate));
 
 	}
-
-	// what happenes when you try to merge null stuff?
 
 	// Delete
 	public boolean delete(Long id) {

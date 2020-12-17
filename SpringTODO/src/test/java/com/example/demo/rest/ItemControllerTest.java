@@ -23,7 +23,7 @@ import com.example.demo.service.ItemService;
 
 @SpringBootTest
 @ActiveProfiles("prod")
-public class ItemControllerTest {
+class ItemControllerTest {
 	
 	@Autowired
 	private ItemController controller;

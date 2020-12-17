@@ -16,21 +16,12 @@ import com.example.demo.util.SpringBeanUtil;
 @Service
 public class ListService {
 
-	// this is where our business logic will happen
-
-	//this is also where CRUD logic will take place.
-
-	// implements are crud functionality
 	private ListRepo repo;
 
-	// makes object mapping easy by automatically determining how one object model
-	// maps to another.
 	private ModelMapper mapper;
 
-	// we create our mapToDto
-
-	private ListDto mapToDTO(TodoList todo_list) {
-		return this.mapper.map(todo_list, ListDto.class);
+	private ListDto mapToDTO(TodoList todoList) {
+		return this.mapper.map(todoList, ListDto.class);
 	}
 
 	@Autowired
@@ -41,18 +32,13 @@ public class ListService {
 	}
 
 	// Create
-	public ListDto create(TodoList todo_list) {
-		return this.mapToDTO(this.repo.save(todo_list));
+	public ListDto create(TodoList todoList) {
+		return this.mapToDTO(this.repo.save(todoList));
 	}
 
 	// read all method
 	public List<ListDto> readAll() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
-		// stream - returns a sequential stream considering collection as its source
-		// map - used to map each element to its corresponding result
-		// :: - for each e.g. Random random = new Random();
-		// random.ints().limit(10).forEach(System.out::println);
-		// Collectors - used to return a list or string
 	}
 
 	// read one method
@@ -61,24 +47,19 @@ public class ListService {
 	}
 
 	// update
-	public ListDto update(ListDto todo_listDto, Long id) {
-		// check if record exists
+	public ListDto update(ListDto todoListDto, Long id) {
+
 		TodoList toUpdate = this.repo.findById(id).orElseThrow(ListNotFoundException::new);
-		// set the record to update
-		toUpdate.setName(todo_listDto.getName());
-		// check update for any nulls
-		SpringBeanUtil.mergeNotNull(todo_listDto, toUpdate);
-		// retun the method from repo
+		toUpdate.setName(todoListDto.getName());
+		SpringBeanUtil.mergeNotNull(todoListDto, toUpdate);
 		return this.mapToDTO(this.repo.save(toUpdate));
 
 	}
 
-	// what happenes when you try to merge null stuff?
-
 	// Delete
 	public boolean delete(Long id) {
-		this.repo.deleteById(id);// true
-		return !this.repo.existsById(id);// true
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
 	}
 
 }

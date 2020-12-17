@@ -23,7 +23,7 @@ import com.example.demo.service.ListService;
 
 @SpringBootTest
 @ActiveProfiles("prod")
-public class ListControllerTest {
+class ListControllerTest {
 	
 	@Autowired
 	private ListController controller;
