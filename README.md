@@ -50,6 +50,7 @@ Tests automatically run when "mvn clean package" in run. However more detailed o
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [Spring Boot](https://spring.io/projects/spring-boot) - Open source Java-based framework used to create a micro Service
 
 ## Version
 
