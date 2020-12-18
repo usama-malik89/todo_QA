@@ -40,6 +40,12 @@ java -jar ToDoAPI-1.0-SNAPSHOT.jar
 ```
 http://localhost:9092/
 ```
+## TESTS
+The unit testing and integration testing are present in this spring boot project
+Selenium Testing (Website Testing) are present in a seperate maven project found here:
+```
+https://github.com/usama-malik89/ToDoSeleniumTest
+```
 
 ## Running the tests
 
