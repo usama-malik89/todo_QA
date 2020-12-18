@@ -36,6 +36,11 @@ This will create a directory 'target' which will contain a jar file, run the jar
 java -jar ToDoAPI-1.0-SNAPSHOT.jar
 ```
 
+2. This will start a local server, to access the web-app go to link:
+```
+http://localhost:9092/
+```
+
 ## Running the tests
 
 Tests automatically run when "mvn clean package" in run. However more detailed output tests can be run using the Sprint Tools IDE:
