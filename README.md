@@ -53,6 +53,10 @@ Tests automatically run when "mvn clean package" in run. However more detailed o
 1. In eclipse open the folder containing the source code as a Maven project
 2. Right click on the project and click Coverage as -> JUnit Test, this will give a more broken down test result
 
+## Static Analysis - SonarCube
+Static analysis was done using SonarCube and the report has been linked below:
+![](documentation/SonarCubePASS.jpg)
+
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
